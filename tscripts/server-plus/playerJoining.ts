@@ -1,5 +1,5 @@
 import EventSignal from "./EventSignal";
-import { world, system, Player } from "@minecraft/server";
+import { world, Player } from "@minecraft/server";
 
 const debug = false;
 
