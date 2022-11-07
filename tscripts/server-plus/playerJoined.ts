@@ -17,10 +17,8 @@ class PlayerJoinedEvent {
             writable: false
         });
     }
-    set cancel(bool : boolean){
-        if (bool){
-            runCmd(`kick "${this.player.name}"`);
-        }
+    kickPlayer(){
+        runCmd(`kick "${this.player.name}"`);
     }
 }
 
