@@ -17,5 +17,6 @@ export default (world:World)=>{
     world.events.playerJoined = playerJoined
     world.events.playerJoining = playerJoining
     if(!world.events.tick)world.events.tick = tick
+    world.events.beforePlayerSleep = beforePlayerSleep
 
 }
