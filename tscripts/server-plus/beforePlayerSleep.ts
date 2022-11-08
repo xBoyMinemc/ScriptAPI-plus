@@ -12,8 +12,7 @@ world.beforeItemUseOn.subscribe(arg => {
     && block?.typeId === MinecraftBlockTypes.bed.id
     && block?.dimension.id === "minecraft:overworld"
     && world.getTime() >= 13000 && world.getTime() <= 23456) {
-        event = new BeforePlayerSleepEvent;
-        event.block = block;
+        let event = new BeforePlayerSleepEvent;
         event.player = Array.from(world.getPlayers({name: arg.source.nameTag}))[0];
         signal.trigger(event);
         arg.cancel = event.cancel;
