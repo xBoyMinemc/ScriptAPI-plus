@@ -3,7 +3,8 @@ import { fishingHookSpawned, fishingHookDespawned } from "./fishingHookSpawned"
 import playerJoined from "./playerJoined"
 import playerJoining from "./playerJoining"
 import tick from "./tick"
-import {World} from "@xBoyMinemc/server-plus"
+import beforePlayerSleep from "./beforePlayerSleep"
+import {World} from "@xboyminemc/server-plus"
 
 
 
@@ -16,4 +17,5 @@ export default (world:World)=>{
     world.events.playerJoined = playerJoined
     world.events.playerJoining = playerJoining
     if(!world.events.tick)world.events.tick = tick
+
 }
