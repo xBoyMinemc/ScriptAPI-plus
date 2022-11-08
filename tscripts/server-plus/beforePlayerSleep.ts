@@ -26,4 +26,4 @@ export {
     BeforePlayerSleepEvent,
     signal as beforePlayerSleep
 }
-export default signal as beforePlayerSleep
+export default signal
