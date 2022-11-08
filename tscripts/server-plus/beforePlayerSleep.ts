@@ -1,21 +1,23 @@
-import { world, Player } form "@minecraft/server"
-import { EventSignal } from './EventSignal'
-export class BeforePlayerSleepEventSignal {}
-export class BeforePlayerSleepEvent {
+import { world, Player,MinecraftBlockTypes } from "@minecraft/server"
+import EventSignal from './EventSignal'
+class BeforePlayerSleepEventSignal extends EventSignal{}
+class BeforePlayerSleepEvent {
     player?: Player;
     cancel = false;
 }
-export default const signal = new BeforePlayerSleepEventSignal();
-world.beforeItemUseOn.subscribe(arg => {
-    let block = arg.source.dimension.getBlock(arg.blockLocation);
-    if(!arg.source.isSneaking
+const signal = new BeforePlayerSleepEventSignal();
+world.events.beforeItemUseOn.subscribe(beforeItemUseOnEvent => {
+    let block = beforeItemUseOnEvent.source.dimension.getBlock(beforeItemUseOnEvent.blockLocation);
+    if(
+       !beforeItemUseOnEvent.source.isSneaking
     && block?.typeId === MinecraftBlockTypes.bed.id
     && block?.dimension.id === "minecraft:overworld"
-    && world.getTime() >= 13000 && world.getTime() <= 23456) {
+    && world.getTime() >= 13000 && world.getTime() <= 23456
+    ) {
         let event = new BeforePlayerSleepEvent;
-        event.player = Array.from(world.getPlayers({name: arg.source.nameTag}))[0];
+        event.player = Array.from(world.getPlayers({name: beforeItemUseOnEvent.source.nameTag}))[0];
         signal.trigger(event);
-        arg.cancel = event.cancel;
+        beforeItemUseOnEvent.cancel = event.cancel;
     }
 });
 
@@ -24,3 +26,4 @@ export {
     BeforePlayerSleepEvent,
     signal as beforePlayerSleep
 }
+export default signal as beforePlayerSleep
