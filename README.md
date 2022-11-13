@@ -1,4 +1,4 @@
-# ~~~GameTest-Plus  ~~~
+~~~GameTest-Plus~~~
 # ScriptAPI-plus
 #
 
