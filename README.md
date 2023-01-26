@@ -1,5 +1,4 @@
-~~~GameTest-Plus~~~
+~~GameTest-Plus~~
 # ScriptAPI-plus
-#
 
 The World Become Greater  
