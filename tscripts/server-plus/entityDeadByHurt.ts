@@ -1,8 +1,8 @@
 import { world } from "@minecraft/server"
 import EventSignal from "./EventSignal"
-import {EntityDeadByHurt,EntityDeadByHurtSignal} from "@xBoyMinemc/server-plus"
+import {EntityDeadByHurtEvent,EntityDeadByHurtEventSignal} from "@xBoyMinemc/server-plus"
   
-const entityDeadByHurt : EntityDeadByHurtSignal = new EventSignal()
+const entityDeadByHurt : EntityDeadByHurtEventSignal = new EventSignal()
 
 
 
@@ -15,7 +15,7 @@ world.events.entityHurt.subscribe(event=>
 )
 
 
-const test = (event : EntityDeadByHurt)=>event.hurtEntity.dimension.runCommandAsync("me "+(event.hurtEntity.nameTag === '' ? event.hurtEntity.typeId : event.hurtEntity.nameTag)+"#x=>"+event.hurtEntity.location.x+"#y=>"+event.hurtEntity.location.y+"#z=>"+event.hurtEntity.location.z +"被杀死"+"\u000a触发自事件world.events.entityDeadByHurt" )
+const test = (event : EntityDeadByHurtEvent)=>event.hurtEntity.dimension.runCommandAsync("me "+(event.hurtEntity.nameTag === '' ? event.hurtEntity.typeId : event.hurtEntity.nameTag)+"#x=>"+event.hurtEntity.location.x+"#y=>"+event.hurtEntity.location.y+"#z=>"+event.hurtEntity.location.z +"被杀死"+"\u000a触发自事件world.events.entityDeadByHurt" )
 
 entityDeadByHurt.subscribe(event=>test(event))
 

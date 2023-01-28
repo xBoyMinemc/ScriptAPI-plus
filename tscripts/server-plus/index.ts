@@ -4,6 +4,7 @@ import playerJoined from "./playerJoined"
 import playerJoining from "./playerJoining"
 import tick from "./tick"
 import beforePlayerSleep from "./beforePlayerSleep"
+// @ts-ignore
 import {World} from "@xboyminemc/server-plus"
 
 
